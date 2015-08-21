@@ -62,7 +62,7 @@
 			std::vector<std::string> search(const char *target, int length);
 
 		public:
-			WuManber();
+			WuManber(std::string files);
 			~WuManber();
 			std::vector<std::string> search(std::string target);
 	};

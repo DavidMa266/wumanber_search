@@ -4,6 +4,10 @@
  *
  *  Created on: Jun 8, 2015
  *      Author: David
+ *
+ *
+ *  REQUIRES BOOST
+ *  TO COMPILE: g++ -g -std=c++0x search.cpp -L/usr/local/lib -lboost_random -lboost_system
  */
 
 
@@ -242,7 +246,7 @@ extern "C" {
 	};
 
 
-	WuManber::WuManber(){
+	WuManber::WuManber(std::string files){
 		trie = new Trie();
 
 		mBlock = 3;
@@ -251,7 +255,7 @@ extern "C" {
 
 		std::vector<std::string> strlist;
 
-		std::string filename = "test.txt4";
+		std::string filename = files;
 		std::ifstream ifs(filename, std::ifstream::in);
 		while(!ifs.eof()) {
 			std::string tmp;
@@ -356,7 +360,11 @@ extern "C" {
 	}
 
 	int main(){
-		WuManber *wu = new WuManber();
+		std::string files;
+		std::cout << "Enter filename: ";
+		std::cin >> files;
+		WuManber *wu = new WuManber(files);
+
 		std::vector<std::string> res;
 		std::string url;
 		std::cout << "Enter target string: ";
